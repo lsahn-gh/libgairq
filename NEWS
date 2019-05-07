@@ -1,0 +1,15 @@
+Gairq 0.1.0
+=============
+Early stage of developement
+
+It provides the below classes
+
+1. GairqAirObject
+It represents the air quality information of the response from the API server.
+
+2. GairqCity
+It takes the responsibility of a "city feed" request to the API server.
+
+3. GairqRequest
+It provides functionalities of the management of an access token and the request
+of every children who inherit this class, for e.g "GairqCity".

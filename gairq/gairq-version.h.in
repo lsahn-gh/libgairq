@@ -1,0 +1,99 @@
+/* gairq-version.h.in
+ *
+ * Copyright 2019 Leesoo Ahn <yisooan@fedoraproject.org>
+ *
+ * This file is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This file is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * SPDX-License-Identifier: LGPL-3.0-or-later
+ */
+
+#ifndef GAIRQ_VERSION_H
+#define GAIRQ_VERSION_H
+
+#if !defined(GAIRQ_INSIDE) && !defined(GAIRQ_COMPILATION)
+# error "Only <gairq/gairq.h> can be included directly."
+#endif
+
+/**
+ * SECTION:gairqversion
+ * @short_description: gairq version checking
+ *
+ * gairq provides macros to check the version of the library
+ * at compile-time
+ */
+
+/**
+ * GAIRQ_MAJOR_VERSION:
+ *
+ * gairq major version component (e.g. 1 if %GAIRQ_VERSION is 1.2.3)
+ */
+#define GAIRQ_MAJOR_VERSION (@MAJOR_VERSION@)
+
+/**
+ * GAIRQ_MINOR_VERSION:
+ *
+ * gairq minor version component (e.g. 2 if %GAIRQ_VERSION is 1.2.3)
+ */
+#define GAIRQ_MINOR_VERSION (@MINOR_VERSION@)
+
+/**
+ * GAIRQ_MICRO_VERSION:
+ *
+ * gairq micro version component (e.g. 3 if %GAIRQ_VERSION is 1.2.3)
+ */
+#define GAIRQ_MICRO_VERSION (@MICRO_VERSION@)
+
+/**
+ * GAIRQ_VERSION
+ *
+ * gairq version.
+ */
+#define GAIRQ_VERSION (@VERSION@)
+
+/**
+ * GAIRQ_VERSION_S:
+ *
+ * gairq version, encoded as a string, useful for printing and
+ * concatenation.
+ */
+#define GAIRQ_VERSION_S "@VERSION@"
+
+#define GAIRQ_ENCODE_VERSION(major,minor,micro) \
+        ((major) << 24 | (minor) << 16 | (micro) << 8)
+
+/**
+ * GAIRQ_VERSION_HEX:
+ *
+ * gairq version, encoded as an hexadecimal number, useful for
+ * integer comparisons.
+ */
+#define GAIRQ_VERSION_HEX \
+        (GAIRQ_ENCODE_VERSION (GAIRQ_MAJOR_VERSION, GAIRQ_MINOR_VERSION, GAIRQ_MICRO_VERSION))
+
+/**
+ * GAIRQ_CHECK_VERSION:
+ * @major: required major version
+ * @minor: required minor version
+ * @micro: required micro version
+ *
+ * Compile-time version checking. Evaluates to %TRUE if the version
+ * of gairq is greater than the required one.
+ */
+#define GAIRQ_CHECK_VERSION(major,minor,micro)   \
+        (GAIRQ_MAJOR_VERSION > (major) || \
+         (GAIRQ_MAJOR_VERSION == (major) && GAIRQ_MINOR_VERSION > (minor)) || \
+         (GAIRQ_MAJOR_VERSION == (major) && GAIRQ_MINOR_VERSION == (minor) && \
+          GAIRQ_MICRO_VERSION >= (micro)))
+
+#endif /* GAIRQ_VERSION_H */
