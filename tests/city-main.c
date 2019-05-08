@@ -62,6 +62,7 @@ main (int   argc,
   g_test_init (&argc, &argv, NULL);
 
   const gchar *token = g_getenv ("GAIRQ_API_TOKEN");
+  g_assert_nonnull (token);
 
   g_test_add_data_func ("/Gairq/city/request/sync",
                         token,
