@@ -136,7 +136,7 @@ gairq_city_request_set_functions (RestProxyCall  *proxy_call,
     default:
       if (error)
         g_set_error (error, GAIRQ_CITY_ERROR, 0,
-                     "%d: Invalid city type code", self->type);
+                     "Invalid city type code: %d", self->type);
       ret = FALSE;
     }
 
