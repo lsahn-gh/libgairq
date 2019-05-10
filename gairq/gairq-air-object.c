@@ -295,12 +295,12 @@ gairq_air_object_json_deserialize_property (JsonSerializable *serializable,
 
           if (json_array_get_length (geo) == 2)
             {
-              gdouble lat, lon;
+              gdouble lat, lng;
               GairqObjectCity *new_city;
 
               lat = json_array_get_double_element (geo, 0);
-              lon = json_array_get_double_element (geo, 1);
-              new_city = gairq_object_city_new (name, url, lat, lon);
+              lng = json_array_get_double_element (geo, 1);
+              new_city = gairq_object_city_new (name, url, lat, lng);
 
               g_value_set_pointer (value, new_city);
               ret = TRUE;
@@ -453,7 +453,7 @@ GairqObjectCity *
 gairq_object_city_new (const gchar *name,
                        const gchar *url,
                        gdouble      lat,
-                       gdouble      lon)
+                       gdouble      lng)
 {
   GairqObjectCity *new_city;
   g_return_val_if_fail (name != NULL, NULL);
@@ -463,7 +463,7 @@ gairq_object_city_new (const gchar *name,
   new_city->name = g_strdup (name);
   new_city->url = g_strdup (url);
   new_city->geo.latitude = lat;
-  new_city->geo.longitude = lon;
+  new_city->geo.longitude = lng;
 
   return new_city;
 }

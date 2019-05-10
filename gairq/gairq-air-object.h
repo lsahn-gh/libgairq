@@ -71,7 +71,7 @@ GairqObjectAttr *   gairq_object_attr_copy_deep (GairqObjectAttr *src);
 GairqObjectCity *   gairq_object_city_new       (const gchar *name,
                                                  const gchar *url,
                                                  gdouble      lat,
-                                                 gdouble      lon);
+                                                 gdouble      lng);
 void                gairq_object_city_free      (GairqObjectCity *city);
 GairqObjectCity *   gairq_object_city_copy      (GairqObjectCity *src);
 GairqObjectCity *   gairq_object_city_copy_deep (GairqObjectCity *src);
