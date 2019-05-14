@@ -122,7 +122,7 @@ gairq_city_request_set_functions (RestProxyCall  *proxy_call,
 {
   GairqCity *self = GAIRQ_CITY (user_data);
   gboolean ret = TRUE;
-  gchar *city = NULL;
+  gchar *functions = NULL;
 
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
@@ -130,7 +130,7 @@ gairq_city_request_set_functions (RestProxyCall  *proxy_call,
     {
     case GAIRQ_CITY_TYPE_NAME:
     case GAIRQ_CITY_TYPE_ID:
-      city = g_strdup_printf ("/feed/%s/", self->city);
+      functions = g_strdup_printf ("/feed/%s/", self->city);
       break;
 
     default:
@@ -141,9 +141,9 @@ gairq_city_request_set_functions (RestProxyCall  *proxy_call,
     }
 
   if (ret)
-    rest_proxy_call_set_function (proxy_call, city);
+    rest_proxy_call_set_function (proxy_call, functions);
 
-  g_free (city);
+  g_free (functions);
 
   return ret;
 }
