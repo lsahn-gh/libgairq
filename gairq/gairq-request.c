@@ -28,8 +28,6 @@ typedef struct
   gchar *     token;
 } GairqRequestPrivate;
 
-G_DEFINE_TYPE_WITH_PRIVATE (GairqRequest, gairq_request, G_TYPE_OBJECT)
-
 /* Properties */
 enum {
   PROP_0,
@@ -38,6 +36,8 @@ enum {
 };
 
 static GParamSpec*  properties [N_PROPERTIES];
+
+G_DEFINE_TYPE_WITH_PRIVATE (GairqRequest, gairq_request, G_TYPE_OBJECT)
 
 #define GET_PRIVATE(_obj) gairq_request_get_instance_private (GAIRQ_REQUEST (_obj))
 
