@@ -313,7 +313,7 @@ gairq_city_request_sync (GairqCity  *self,
 
   root = gairq_request_call_sync (GAIRQ_REQUEST (self), error);
   if (root)
-    ret = gairq_city_deserialize_json (root, error);
+    ret = gairq_request_default_deserialize (root, error);
 
   json_node_unref (root);
 
@@ -348,7 +348,7 @@ gairq_city_request_finish (GairqCity     *self,
 
   root = g_task_propagate_pointer (G_TASK (res), error);
   if (root)
-    return gairq_city_deserialize_json (root, error);
+    return gairq_request_default_deserialize (root, error);
 
   return NULL;
 }
