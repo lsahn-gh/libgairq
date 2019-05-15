@@ -30,6 +30,8 @@
 #include <json-glib/json-glib.h>
 #include <rest/rest-proxy.h>
 
+#include <gairq/gairq-air-object.h>
+
 G_BEGIN_DECLS
 
 #define GAIRQ_TYPE_REQUEST (gairq_request_get_type ())
@@ -52,16 +54,18 @@ struct _GairqRequestClass
   gpointer      _reserved4;
 };
 
-GairqRequest *  gairq_request_new           (const gchar *access_token);
-JsonNode *      gairq_request_call_sync     (GairqRequest  *self,
-                                             GError       **error);
-void            gairq_request_call_async    (GairqRequest        *self,
-                                             GCancellable        *cancellable,
-                                             GAsyncReadyCallback  callback,
-                                             gpointer             callback_data);
-JsonNode *      gairq_request_call_finish   (GairqRequest  *self,
-                                             GAsyncResult  *res,
-                                             GError       **error);
+GairqRequest *    gairq_request_new                 (const gchar *access_token);
+JsonNode *        gairq_request_call_sync           (GairqRequest  *self,
+                                                     GError       **error);
+void              gairq_request_call_async          (GairqRequest        *self,
+                                                     GCancellable        *cancellable,
+                                                     GAsyncReadyCallback  callback,
+                                                     gpointer             callback_data);
+JsonNode *        gairq_request_call_finish         (GairqRequest  *self,
+                                                     GAsyncResult  *res,
+                                                     GError       **error);
+GairqAirObject *  gairq_request_default_deserialize (JsonNode  *root,
+                                                     GError   **error);
 
 G_END_DECLS
 

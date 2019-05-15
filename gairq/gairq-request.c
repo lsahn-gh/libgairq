@@ -277,3 +277,37 @@ gairq_request_call_finish (GairqRequest  *self,
 
   return g_task_propagate_pointer (G_TASK (res), error);
 }
+
+GairqAirObject *
+gairq_request_default_deserialize (JsonNode  *root,
+                                   GError   **error)
+{
+  JsonObject *object;
+  JsonNode *status, *data;
+  const gchar *status_msg;
+  gpointer ret = NULL;
+
+  g_return_val_if_fail (error == NULL || *error == NULL, NULL);
+
+  object = json_node_get_object (root);
+  status = json_object_get_member (object, "status");
+  data = json_object_get_member (object, "data");
+
+  status_msg = json_node_get_string (status);
+  if (g_strcmp0 (status_msg, "ok") == 0)
+    {
+      ret = GAIRQ_AIR_OBJECT (json_gobject_deserialize (GAIRQ_TYPE_AIR_OBJECT, data));
+    }
+  else /* Set up new error message */
+    {
+      if (error)
+        {
+          const gchar *error_msg = json_node_get_string (data);
+
+          g_set_error (error, GAIRQ_REQUEST_ERROR, 0,
+                       "Error-Response: %s", error_msg);
+        }
+    }
+
+  return ret;
+}
