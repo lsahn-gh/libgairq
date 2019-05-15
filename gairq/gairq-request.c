@@ -39,8 +39,17 @@ static GParamSpec*  properties [N_PROPERTIES];
 
 G_DEFINE_TYPE_WITH_PRIVATE (GairqRequest, gairq_request, G_TYPE_OBJECT)
 
+#define GAIRQ_REQUEST_ERROR (gairq_request_error_quark ())
+
 #define GET_PRIVATE(_obj) gairq_request_get_instance_private (GAIRQ_REQUEST (_obj))
 
+
+/* --- GairqRequestError --- */
+static GQuark
+gairq_request_error_quark (void)
+{
+  return g_quark_from_static_string ("gairq-request-error-quark");
+}
 
 /* --- GObject --- */
 static void
