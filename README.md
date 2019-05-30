@@ -10,7 +10,7 @@ Not only just a request, but also the response, JSON data, is automatically dese
 It is for C developers who want to gather the information in Linux Desktop Environment, IoT and so forth.
 
 This library is yet in an early stage of development, use it just for test purposes at your own risk. 
-See ``tests/city-main.c`` to find out the use of the currently implemented APIs.
+See ``tests`` directory to find out the use of the currently implemented APIs.
 
 For more information, see:
 
@@ -24,11 +24,11 @@ Features
  * Support GObject based class construction/finalization
  * Support Sync/Async functionalities
  * Request [City Feed][city-feed] based information
+ * Request [Geolocalized Feed][geolocalized-feed] based information
  
 Todo
 ----------------------------------------------
 
- * [ ] Implement Geolocalized Feed
  * [ ] Implement Map Queries
  * [ ] Implement Search
  * [ ] Implement GObject Introspection
@@ -78,6 +78,7 @@ We have no warranty on it.
 
 
 [city-feed]: https://aqicn.org/json-api/doc/#api-City_Feed
+[geolocalized-feed]: https://aqicn.org/json-api/doc/#api-Geolocalized_Feed
 [glib]: https://gitlab.gnome.org/GNOME/glib
 [aqicn]: http://aqicn.org
 [json-api]: https://aqicn.org/json-api/doc/#api-_
