@@ -43,6 +43,15 @@ test_gairq_city (gconstpointer token)
 }
 
 static void
+test_gairq_geo (gconstpointer token)
+{
+  g_autoptr(GairqGeo) val = NULL;
+
+  val = gairq_geo_new_with_ip (token);
+  g_assert_nonnull (val);
+}
+
+static void
 test_gairq_request (gconstpointer token)
 {
   g_autoptr(GairqRequest) val = NULL;
@@ -69,6 +78,10 @@ main (int   argc,
   g_test_add_data_func ("/Gairq/autoptr/City",
                         token,
                         test_gairq_city);
+
+  g_test_add_data_func ("/Gairq/autoptr/Geo",
+                        token,
+                        test_gairq_geo);
 
   g_test_add_data_func ("/Gairq/autoptr/Request",
                         token,
