@@ -1,6 +1,7 @@
 gairq_sources = [
   'gairq-air-object.c',
   'gairq-city.c',
+  'gairq-geo.c',
   'gairq-request.c',
 ]
 
@@ -9,6 +10,7 @@ gairq_headers = [
   'gairq-air-object.h',
   'gairq-city.h',
   'gairq-debug.h',
+  'gairq-geo.h',
   'gairq-request.h',
 ]
 

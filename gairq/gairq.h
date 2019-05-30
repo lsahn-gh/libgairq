@@ -28,6 +28,7 @@ G_BEGIN_DECLS
 #define GAIRQ_INSIDE
 # include <gairq/gairq-air-object.h>
 # include <gairq/gairq-city.h>
+# include <gairq/gairq-geo.h>
 # include <gairq/gairq-request.h>
 # include <gairq/gairq-version.h>
 #undef GAIRQ_INSIDE
