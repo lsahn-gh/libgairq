@@ -255,6 +255,8 @@ gairq_geo_new_with_lat_lng (const gchar *access_token,
                             const gchar *lng)
 {
   g_return_val_if_fail (STR_VALIDATOR (access_token), NULL);
+  g_return_val_if_fail (STR_VALIDATOR (lat), NULL);
+  g_return_val_if_fail (STR_VALIDATOR (lng), NULL);
   g_return_val_if_fail (is_stringified_lat_lng (lat), NULL);
   g_return_val_if_fail (is_stringified_lat_lng (lng), NULL);
 
