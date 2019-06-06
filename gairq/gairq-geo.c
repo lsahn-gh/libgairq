@@ -217,7 +217,7 @@ gairq_geo_init (GairqGeo *self)
 static gboolean
 is_stringified_lat_lng (const gchar *value)
 {
-  gboolean ret = FALSE;
+  gboolean ret = TRUE;
 
   for ( ; *value != '\0'; value++)
     {
@@ -226,10 +226,10 @@ is_stringified_lat_lng (const gchar *value)
         case '0': case '1': case '2': case '3': case '4':
         case '5': case '6': case '7': case '8': case '9':
         case '.':
-          ret = TRUE;
           break;
 
         default:
+          ret = FALSE;
           break;
         }
     }
